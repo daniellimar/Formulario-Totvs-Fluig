@@ -5,6 +5,8 @@
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
     <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body>
 <div class="fluig-style-guide">
@@ -15,7 +17,7 @@
                 <input type="text" id="nome" name="nome" class="form-control">
             </div>
             <div class="col-md-4">
-                <label for="nome">Email</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" class="form-control">
             </div>
             <div class="col-md-2">
@@ -28,7 +30,7 @@
 
         <div class="row">
             <div class="col-md-2">
-                <label for="nome">Documento de identidade</label>
+                <label for="documentoIdentidade">CPF</label>
                 <input type="text" id="documentoIdentidade" name="documentoIdentidade" class="form-control">
             </div>
             <div class="col-md-2">
@@ -44,13 +46,13 @@
                 <h6>Tipo Loja</h6>
             </div>
             <br>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="custom-radio custom-radio-primary">
                     <input type="radio" name="tipoPonto" id="radio1" value="quiosque">
                     <label for="radio1">Quiosque</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="custom-radio custom-radio-primary">
                     <input type="radio" name="tipoPonto" id="radio2" value="loja">
                     <label for="radio2">Loja</label>
@@ -62,7 +64,7 @@
             <div class="col-md-12">
                 <h6>Dias de funcionamento:</h6>
             </div>
-            <div class="col-md-12 custom-checkbox-group">
+            <div class="custom-checkbox-group" id="diasSemana">
                 <div class="custom-checkbox custom-checkbox-success">
                     <input type="checkbox" id="checkbox1" name="diasSemana1" value="Segunda-feira">
                     <label for="checkbox1">Segunda-feira</label>
@@ -93,11 +95,58 @@
                 </div>
             </div>
         </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" id="logradouro" name="logradouro" class="form-control">
+            </div>
+            <div class="col-md-1">
+                <label for="numero">Número</label>
+                <input type="text" id="numero" name="numero" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="estado">Estado</label>
+                <input type="text" id="estado" name="estado" class="form-control">
+            </div>
+        </div>
     </form>
 </div>
-</body>
 
+<script src="cep.js"></script>
 <script>
-    var mySimpleCalendar = FLUIGC.calendar('#dataNascimento');
+    FLUIGC.calendar('#dataNascimento');
+
+    $(document).ready(function () {
+        $('#telefone').mask('(00) 00000-0000');
+        $('#cep').mask('00000-000');
+        $('#dataNascimento').mask('00/00/0000');
+        $('#documentoIdentidade').mask('000.000.000-00');
+    });
 </script>
+
+<style>
+    form {
+        max-width: 90vw;
+    }
+
+    #diasSemana {
+        padding-left: 1em;
+    }
+</style>
+</body>
 </html>
